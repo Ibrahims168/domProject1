@@ -11,14 +11,14 @@ class School{
         const student = new Student(firstName, lastName, userNme, password, age, gender, tuition, grade) 
         this.students.push(student)
     }
-    hireTeacher(firstName, lastName, userNme, password, age, salary ,subject){
-        const teacher = new Teacher(firstName, lastName, userNme, password, age, salary ,subject)
+    hireTeacher(firstName, lastName, userName, password, age, salary ,subject){
+        const teacher = new Teacher(firstName, lastName, userName, password, age, salary ,subject)
         this.teachers.push(teacher)
 
     }
-    signin(userName,password){
-        const teachers = this.teacher.find(t => t.userName == userName)
-        const students = this.student.find(s => s.userName == userName)
+    signIn(userName,password){
+        const teacher = this.teachers.find(t => t.userName == userName)
+        const student = this.students.find(s => s.userName == userName)
     if (teacher) {
         return teacher.signIn(password)
     }
@@ -31,10 +31,10 @@ class School{
 } 
 
 class User{
-    constructor(firstName, lastName, userNme, password, age, gender){
+    constructor(firstName, lastName, userName, password, age, gender){
         this.firstName = firstName
         this.lastName = lastName
-        this.userNme = userNme
+        this.userName = userName
         this.password = password
         this.age = age 
         this.gender = gender
@@ -42,7 +42,7 @@ class User{
         this.isAchtive = true
         this.lastLoggedIn = 0
     }
-    signIn(){
+    signIn(password){
         if (this.isAchtive) {
             if (password === this.password) {
                 this.isLoggedIn = true
@@ -73,16 +73,16 @@ class User{
 }
 
 class Student extends User{
-    constructor(firstName, lastName, userNme, password, age, gender, tuition, grade){
-        super(firstName, lastName, userNme, password, age, gender)
+    constructor(firstName, lastName, userName, password, age, gender, tuition, grade){
+        super(firstName, lastName, userName, password, age, gender)
         this.tuition = tuition
         this.grade = grade
     }
 }
 
 class Teacher extends User{
-    constructor(firstName, lastName, userNme, password, age, salary ,subject) {
-        super(firstName, lastName, userNme, password, age,)
+    constructor(firstName, lastName, userName, password, age, salary ,subject) {
+        super(firstName, lastName, userName, password, age,)
         this.salary = salary
         this.subject =subject
     }
@@ -90,7 +90,6 @@ class Teacher extends User{
 
 const school = new School('jerusalem', 'high-school', 'IBschools')
 
-school.registerStudent('ibrahim', 'sharif', '@pobbda', 'wordpass123', 18, 'M', '1278$', '12th')
-school.hireTeacher('ahmad', 'kaws', '@ahmkaswami', 'password123', 30, '9000$', 'money' )
+school.registerStudent('ibrahim', 'sharif', 'pobbda', 'wordpass123', 18, 'M', '1278$', '12th')
+school.hireTeacher('ahmad', 'kaws', 'ahmkaswami', 'password123', 30, '9000$', 'money' )
 
-console.log(school);

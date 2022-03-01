@@ -6,12 +6,13 @@ const signInBtn = document.getElementById('signInBtn')
 const mainContainer = document.getElementById('mainContainer')
 
 const renderUser = function (user) {
+    mainContainer.innerHTML = ''
     const firstName = document.createElement('h2')
     firstName.innerText = `first name: ${user.firstName}`
     const lastName = document.createElement('h2')
-    firstName.innerText = `last name: ${user.lastName}`
+    lastName.innerText = `last name: ${user.lastName}`
     const lastLogIn = document.createElement('h2')
-    lastLogIn.innerText=`last Login: ${user.getLastLOgIn()}`
+    lastLogIn.innerText=`last Login: ${user.gitLastLogInDate()}`
     mainContainer.append(firstName,lastName,lastLogIn)
 }
 
