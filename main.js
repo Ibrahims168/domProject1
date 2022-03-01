@@ -10,7 +10,9 @@ const renderUser = function (user) {
     firstName.innerText = `first name: ${user.firstName}`
     const lastName = document.createElement('h2')
     firstName.innerText = `last name: ${user.lastName}`
-    mainContainer.append(firstName,lastName)
+    const lastLogIn = document.createElement('h2')
+    lastLogIn.innerText=`last Login: ${user.getLastLOgIn()}`
+    mainContainer.append(firstName,lastName,lastLogIn)
 }
 
 
@@ -18,8 +20,14 @@ const submit = function () {
     const userName = userNameInput.value
     const password = passwordInput.value
     const user = school.signIn(userName,password)
-    
-}
+    userNameInput.value = ''
+    passwordInput.value = ''
+    if(user.err) {
+        alert(user.msg)
+    }else{
+        renderUser(user)
+    }
+} 
     signInBtn.addEventListener('click',submit)
 
 // -------------------------------------------

@@ -44,9 +44,13 @@ class User{
     }
     signIn(){
         if (this.isAchtive) {
-            this.isLoggedIn = true
-            this.lastLoggedIn = Date.now()
-            return this
+            if (password === this.password) {
+                this.isLoggedIn = true
+                this.lastLoggedIn = Date.now()
+                return this    
+            } else {
+                return { err: true, msg: 'wrong password'}
+            }
         }else{
             alert('this shit has been deleted')
         }
