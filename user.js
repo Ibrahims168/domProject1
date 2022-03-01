@@ -19,7 +19,7 @@ class School{
     signin(userName,password){
         const teachers = this.teacher.find(t => t.userName == userName)
         const students = this.student.find(s => s.userName == userName)
-        
+    
     }
     
 } 
