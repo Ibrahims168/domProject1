@@ -19,7 +19,13 @@ class School{
     signin(userName,password){
         const teachers = this.teacher.find(t => t.userName == userName)
         const students = this.student.find(s => s.userName == userName)
-    
+    if (teacher) {
+        return teacher.signIn(password)
+    }
+    if (student) {
+        return student.signIn(password)
+    }
+    return{err: true, msg:'connat find user'}
     }
     
 } 
